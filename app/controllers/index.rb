@@ -13,9 +13,8 @@ get '/cases/wards' do
     puts @crimes_per_ward.to_json
     @crimes_per_ward.to_json
   else
-    redirect :'/'
+    redirect '/'
   end
-
 end
 
 get '/cases/:id' do

@@ -2,7 +2,7 @@
 
 
 $(document).ready(function() {
-  canvas = d3.select(".d3-wrapper").append("svg").attr("width", 2000).attr("height", 500).attr("class", "svg-wrapper");
+  canvas = d3.select(".d3-wrapper").append("svg").attr("width", 2000).attr("height", 200).attr("class", "svg-wrapper");
  $(".link-ward").on("click", function(event) {
   event.preventDefault();
   var $link = $(this);
@@ -24,14 +24,16 @@ $(document).ready(function() {
         var $id = $clicked_circle.attr('id');
         var url = $('.ward-link' + $id).attr("href");
         console.log(url)
-        var ajaxRequest = $.ajax({
-          url: url,
-          type: 'get'
-        });
+        $('.ward-info').html("<h1>" + $id + "th ward</h1>");
+         $('.ward-info h1').css("margin-left", $clicked_circle.attr("cx"));
+        // var ajaxRequest = $.ajax({
+        //   url: url,
+        //   type: 'get'
+        // });
 
-        ajaxRequest.done(function (jsonWardCrimeData) {
-          console.log(jsonWardCrimeData);
-        });
+        // ajaxRequest.done(function (jsonWardCrimeData) {
+        //   console.log(jsonWardCrimeData);
+        // });
 
     });
 

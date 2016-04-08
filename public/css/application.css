@@ -18,3 +18,11 @@
   position: fixed;
 }
 
+.click-to-see a {
+  display: block;
+    color: white;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+

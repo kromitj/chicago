@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>CHicago Wards</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+  <script>
+
+//      d3.xml("Chicago_community_areas_map.svg", "image/svg+xml", function(error, xml) {
+//   if (error) throw error;
+//   document.body.appendChild(xml.documentElement);
+// });
+    var canvas = d3.select("body").append("svg")
+    .attr("width", 760)
+    .attr("height", 700)
+
+    d3.json("db/wards.geojson", function (error, data) {
+
+      var group = canvas.selectAll("g")
+      .data(data.features)
+      .enter()
+      .append("g")
+
+      var projection = d3.geo.mercator()
+      var path = d3.geo.path().projection(projection);
+
+      var areas = group.append("path")
+        .attr("d", path)
+        .attr("class", "area")
+
+
+        group.append("text")
+        .attr("x", function (d) {return path.centroid(d)[0];})
+        .attr("y", function (d) {return path.centroid(d)[1];})
+        .text(function (d) { return d.properties.STATEFP10;})
+    });
+  </script>
+</body>
+</html>

@@ -24,16 +24,18 @@ $(document).ready(function() {
         var $id = $clicked_circle.attr('id');
         var url = $('.ward-link' + $id).attr("href");
         console.log(url)
-        $('.ward-info').html("<h1>" + $id + "th ward</h1>");
-         $('.ward-info h1').css("margin-left", $clicked_circle.attr("cx"));
-        // var ajaxRequest = $.ajax({
-        //   url: url,
-        //   type: 'get'
-        // });
+        $('.ward-info').html("<div class='ward-data'><h1>" + $id + "th ward</h1><br><h2>" + $(this).attr("crimes") + " crimes commited, scary!</h2></div>");
 
-        // ajaxRequest.done(function (jsonWardCrimeData) {
-        //   console.log(jsonWardCrimeData);
-        // });
+        var ajaxRequest = $.ajax({
+          url: url,
+          type: 'get'
+        });
+
+        ajaxRequest.done(function (jsonWardCrimeData) {
+          console.log(jsonWardCrimeData);
+          console.log("yop")
+          $('.specific-data').html(jsonWardCrimeData);
+        });
 
     });
 
@@ -47,7 +49,7 @@ $(document).ready(function() {
 
     for (var index = 0; index < keys.length; index++) {
        canvas.insert("a").attr("href", "cases/" + keys[index]).attr("class", "ward-link" + keys[index]);
-       var circle = canvas.append("circle").attr("cx", past_position_x).attr("cy", past_position_y).attr("r", jsonData[keys[index]]).attr("fill", "red").attr("id", keys[index]).attr("class", "ward");
+       var circle = canvas.append("circle").attr("cx", past_position_x).attr("cy", past_position_y).attr("r", jsonData[keys[index]]).attr("fill", "red").attr("id", keys[index]).attr("class", "ward").attr("crimes", jsonData[keys[index]]);
        console.log('#' + index);
 
        past_position_x += (jsonData[keys[index]]) * 2.25

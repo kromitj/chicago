@@ -19,9 +19,9 @@ end
 
 get '/cases/:id' do
   puts params[:id]
-  @ward = { name: "fuckery"}
+  @cases = Case.where(ward: params[:id])
   if request.xhr?
      puts "indide ajax"
-     erb :'_ward_show', locals: { ward: @ward}, :layout => false
+     erb :'_ward_show', locals: { cases: @cases}, :layout => false
   end
 end

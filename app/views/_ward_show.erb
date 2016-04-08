@@ -1,1 +1,10 @@
-<h1>Yo</h1>
+
+<ol>
+  <% cases.each do |_case|%>
+    <li>
+      <p><%= _case.primary_decsription %></p>
+      <p><%= _case.block %></p>
+      <p><%= _case.date_of_occurrence %></p>
+    </li>
+  <% end %>  
+</ol>

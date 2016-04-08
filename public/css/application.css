@@ -1,3 +1,16 @@
 .ward {
 /*  display: none;*/
 }
+
+.ward-info {
+  position: fixed;
+   margin-left: 18%;
+   width: 100%;
+   display: block;
+}
+
+.specific-data {
+  margin-left: 66%;
+  position: fixed;
+}
+

@@ -1,4 +1,8 @@
 get '/' do
+  erb :'home'
+end
+
+get '/cases' do
   @case = Case.all
    @crimes_per_ward = @case.crimes_per_ward
   erb :'index'
@@ -12,6 +16,17 @@ get '/cases/wards' do
     content_type :json
     puts @crimes_per_ward.to_json
     @crimes_per_ward.to_json
+  else
+    redirect '/'
+  end
+end
+
+get '/cases/:id' do
+  puts "inside cases/:id"
+  @case = Case.find(params[:id])
+  puts @case.primary_decsription
+  if request.xhr?
+    erb :'/cases/_show' , locals: { _case: @case}, :layout => false
   else
     redirect '/'
   end

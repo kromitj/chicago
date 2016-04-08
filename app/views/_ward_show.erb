@@ -1,10 +1,14 @@
 
 <ol>
   <% cases.each do |_case|%>
-    <li>
-      <p><%= _case.primary_decsription %></p>
+    <span class="full-details-wrapper" case-span="<%= _case.id %>"></span>
+    <div class="short-details">
+      <li class="case-item">
+      <p><a href="cases/<%= _case.id %>" class="case-link" case-link="<%=  _case.id %>"><%= _case.primary_decsription %></a></p>
       <p><%= _case.block %></p>
       <p><%= _case.date_of_occurrence %></p>
     </li>
-  <% end %>  
+    </div>
+
+  <% end %>
 </ol>

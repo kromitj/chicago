@@ -12,3 +12,5 @@ class Case < ActiveRecord::Base
   end
   # Remember to create a migration!
 end
+
+

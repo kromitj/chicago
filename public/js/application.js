@@ -8,13 +8,16 @@ $(document).ready(function() {
   event.preventDefault();
   var $link = $(this);
   var url = $link.attr("href");
+  $('.load-animation').toggle();
   var ajaxRequest = $.ajax({
       url: url,
       type: 'get'
     });
 
     ajaxRequest.done(function (jsonWardCrimeData) {
+      $('.load-animation').toggle();
       var sorted = sortIncremental(jsonWardCrimeData);
+      // $('load-animation').toggle();
       createBubbles(sorted);
     });
 
@@ -24,12 +27,14 @@ $(document).ready(function() {
   event.preventDefault();
   var $link = $(this);
   var url = $link.attr("href");
+  $('.load-animation').toggle();
   var ajaxRequest = $.ajax({
       url: url,
       type: 'get'
     });
 
     ajaxRequest.done(function (jsonWardCrimeData) {
+      $('.load-animation').toggle();
       var wardObjs = jsonToWardObj(jsonWardCrimeData);
       createBubbles(wardObjs);
     });
@@ -41,6 +46,7 @@ $(document).ready(function() {
         var $clicked_circle = $(this);
         var $id = $clicked_circle.attr('id');
         var url = $('.ward-link' + $id).attr("href");
+        $('.load-animation').toggle();
         $('.ward-info').html("<div class='ward-data'><h1>" + $id + "th ward</h1><br><h2>" + $(this).attr("crimes") + " crimes commited, scary!</h2></div>");
 
         var ajaxRequest = $.ajax({
@@ -49,6 +55,7 @@ $(document).ready(function() {
         });
 
         ajaxRequest.done(function (jsonWardCrimeData) {
+          $('.load-animation').toggle();
           $('.specific-data').html(jsonWardCrimeData);
         });
 
@@ -73,6 +80,25 @@ $(document).ready(function() {
       $span_wrapper.html(caseFullDetailsPartial);
     });
 
+ })
+
+ $(".map-wrapper").on("click", "g", function(event) {
+  event.preventDefault();
+  var $ward = $(this)
+  var $id = $ward[0].__data__.properties.ward
+
+  console.log($ward[0].__data__.properties.ward);
+  $('.load-animation').toggle();
+  var ajaxRequest = $.ajax({
+    url: "wards/" + $id,
+    type: 'get'
+  });
+
+  ajaxRequest.done(function (jsonWardCrimeData) {
+    $('.ward-info').html("<div class='ward-data'><h1>" + $id + "th ward</h1><br><h2></div>");
+    $('.load-animation').toggle();
+    $('.specific-data').html(jsonWardCrimeData);
+  });
  })
 
   var createBubbles = function(wardObj) {

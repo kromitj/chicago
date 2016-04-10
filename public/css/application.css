@@ -1,6 +1,44 @@
 .body {
-  background-image: url("../chicago.jpg");
+  /*background-image: url("../chicago.jpg");*/
 
+}
+
+.click-to-see a {
+  display: block;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+/*.d3-wrapper {
+  position: fixed;
+}*/
+
+.load-animation {
+  position: fixed;
+  margin-left: 45%;
+  margin-top: 10%;  
+  background-image: url("../img/ripple.gif");
+  display: none;
+}
+
+.map-wrapper {
+  margin-left: 10%;
+  float: left;
+  width: 30%;
+}
+
+.see-by-ward {
+  left: 75%;
+}
+
+.see-by-crime-count {
+  left: 45%;
+}
+ 
+.specific-data {
+  margin-left: 10%;
+  float: right;
+  width: 30%;
 }
 
 .ward {
@@ -8,27 +46,17 @@
 }
 
 .ward-info {
-  position: fixed;
-   margin-left: 18%;
-   width: 100%;
-   display: block;
-}
-
-.specific-data {
-  margin-left: 66%;
+  padding-left: 8%;
+  display: inline-block;
+  width: 30%;
   position: fixed;
 }
 
-.click-to-see a {
-  display: block;
-    color: white;
-    padding: 8px 0 8px 16px;
-    text-decoration: none;
-}
 
-p {
-  color: white;
-}
+
+
+
+
 
 
 

@@ -1,5 +1,5 @@
-var width = 1000,
-height = 1500;
+var width = 800,
+height = 1000;
     
   var geoCanvas = d3.select(".map-wrapper").append("svg")
     .attr("width", width)
@@ -15,8 +15,8 @@ height = 1500;
       group[0].forEach(function(g) {console.log("yo" + d3.select(g).data())})
 
 var center = d3.geo.centroid(data)
-      var scale  = 150;
-      var offset = [width/2, height/2];
+      var scale  = 100;
+      var offset = [width/3.5, height/3.5];
       var projection = d3.geo.mercator().scale(scale).center(center)
           .translate(offset);
           

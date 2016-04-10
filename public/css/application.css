@@ -9,9 +9,9 @@
     text-decoration: none;
 }
 
-/*.d3-wrapper {
-  position: fixed;
-}*/
+.d3-wrapper {
+  overflow-x:scroll;
+}
 
 .load-animation {
   position: fixed;
@@ -22,9 +22,9 @@
 }
 
 .map-wrapper {
-  margin-left: 10%; 
+  padding-left: 10%;
   float: left;
-  width: 30%;
+  width: 30%;  
 }
 
 .see-by-ward {
@@ -36,7 +36,7 @@
 }
  
 .specific-data {
-  margin-left: 10%;
+ padding-left: 10%;
   float: right;
   width: 30%;
 }
@@ -49,7 +49,10 @@
   padding-left: 8%;
   display: inline-block;
   width: 30%;
-  position: fixed;
+}
+
+.wrapper {
+  margin:0 auto;
 }
 
 
